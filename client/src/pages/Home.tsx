@@ -2,6 +2,7 @@
 import { ArrowUpRight, CalendarDays, Menu, X } from "lucide-react";
 import { useState } from "react";
 import SmoothScroll from "@/components/ui/smooth-scroll";
+import entry01Photo from "@/photos/img.png";
 
 const entries = [
   {
@@ -12,7 +13,7 @@ const entries = [
     intro:
       "Starting Year 2 means becoming more intentional: not only with the English I use, but with how I explain technical ideas to another person.",
     body: "This first entry sets the direction for my portfolio. I want to document the moments where something became clearer — a new phrase, a better structure, or a more confident way to present my work.",
-    image: "/manus-storage/editorial-desk_42aee227.png",
+    image: entry01Photo,
   },
   {
     id: "02",
@@ -92,7 +93,7 @@ export default function Home() {
                     <p className="entry-intro">{entry.intro}</p>
                     <p className="entry-body">{entry.body}</p>
                   </div>
-                  <div className="entry-image"><img src={entry.image} alt="" /></div>
+                  <div className="entry-image"><img src={entry.image} alt={entry.id === "01" ? "Coastal village beside clear blue water" : ""} /></div>
                 </div>
               </article>
             ))}
