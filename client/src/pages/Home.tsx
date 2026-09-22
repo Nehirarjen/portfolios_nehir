@@ -19,12 +19,44 @@ const entries = [
     id: "02",
     date: "25 AUG 2026",
     tag: "PROJECT 01",
-    title: "Describing a technical idea",
+    title: "Situation:",
     intro:
-      "Good technical English is less about sounding complicated and more about making a complex idea easy to follow.",
-    body: "For this project I practised breaking information into a beginning, a useful middle, and a clear next step. The hardest part was leaving out details that did not help the reader — a small edit that made the whole explanation stronger.",
-    image: "/manus-storage/editorial-circuit_a80fe743.png",
-  },
+      "You are a second-year apprentice who is about to move to another department in your (real) company. Your superior gave you the task to create a booklet for the apprentice who is about to take over your job. Start thinking about the various tasks you do at work, which ones you like, and realistically, which ones could be put in this learning documentation.",
+    body: `Brainstorming and background info:
+
+• What's the name of your company?
+Bucher-Guyer AG
+
+• What's your current department?
+None, I don't work at the company yet, I'm completing education at another company for the first two years.
+
+• What tasks do you carry out on a regular basis?
+A task i do aon a regular basis are user tasks, even though they change from time to time.
+
+• Which of these is a complex task?
+They can get complex when, for example, a merging or pipeline error occurs.
+
+• Why do you like or dislike doing this task?
+They get difficult pretty quickly, but otherwise, they're nice and entertaining to do.
+
+• How do you manage this complex task?
+By getting help or support from my coworkers and instructor.
+
+• How can you organise clear and effective explanations of a complex task for your classmate?
+By explaining the structure of user stories, for example "definition of done".
+
+• What are the dos and the don’ts with regard to this task?
+Don't do anything with the git structre you don't understand, as it risks doing something wrong.
+
+• What issues would you have to deal with if you forgot an essential step of your complex task?
+If there's something wrong with my code, the reviewer of my story leaves a comment with requested changes.
+
+• What skills do you need to complete these tasks? 
+Coding skills.
+
+• Start to list below some specific vocabular terms you need to know to do the various tasks at your work:
+User story, scrum, git, branch, backend, frontend.`,
+  }, 
   {
     id: "03",
     date: "01 SEP 2026",
@@ -86,14 +118,16 @@ export default function Home() {
             {entries.map((entry) => (
               <article className={`entry entry-sticky entry-${entry.id}`} key={entry.id}>
                 <div className="entry-meta"><span className="entry-number">{entry.id}</span><span className="entry-date">{entry.date}</span></div>
-                <div className="entry-main">
+                <div className={`entry-main${entry.image ? "" : " entry-main-no-image"}`}>
                   <div className="entry-copy">
                     <p className="entry-tag">{entry.tag}</p>
                     <h3>{entry.title}</h3>
                     <p className="entry-intro">{entry.intro}</p>
                     <p className="entry-body">{entry.body}</p>
                   </div>
-                  <div className="entry-image"><img src={entry.image} alt={entry.id === "01" ? "Coastal village beside clear blue water" : ""} /></div>
+                  {entry.image && (
+                    <div className="entry-image"><img src={entry.image} alt={entry.id === "01" ? "Coastal village beside clear blue water" : ""} /></div>
+                  )}
                 </div>
               </article>
             ))}
